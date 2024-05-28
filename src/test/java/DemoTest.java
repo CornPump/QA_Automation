@@ -16,6 +16,17 @@ public class DemoTest {
     }
 	
 	@Test
+	public void testValidTriangleEquals() {
+        assertTrue(Demo.isTriangle(3, 3, 3)); 
+        assertTrue(Demo.isTriangle(5, 5, 5)); 
+    }
+	
+	@Test
+	public void testInvalidTriangleZeroes() {
+        assertFalse(Demo.isTriangle(0, 0, 0)); 
+    }
+	
+	@Test
 	public void testInvalidTriangleZero() {
         assertFalse(Demo.isTriangle(1, 1, 0)); 
         assertFalse(Demo.isTriangle(0, 1, 1)); 
@@ -24,8 +35,10 @@ public class DemoTest {
 	
 	@Test
 	public void testInvalidTriangleNegativeDigit() {
-        assertFalse(Demo.isTriangle(-1, 2, 3)); 
+        assertFalse(Demo.isTriangle(-1, 2, 4)); 
         assertFalse(Demo.isTriangle(-1, 1, 1));
+        assertFalse(Demo.isTriangle(1, -2, 4));
+        assertFalse(Demo.isTriangle(1, 2, -4));
         assertFalse(Demo.isTriangle(2, -1, 3));
     }
 	
@@ -34,14 +47,31 @@ public class DemoTest {
         assertFalse(Demo.isTriangle(-1, -2, -3)); 
         assertFalse(Demo.isTriangle(-1, -1, -1)); 
         assertFalse(Demo.isTriangle(-2, -1, -3)); 
+        assertFalse(Demo.isTriangle(-2, -1, -5)); 
     }
 	
 	@Test
-	public void testvalidTriangleDoubles() {
+	public void testValidTriangleDoubles() {
         assertTrue(Demo.isTriangle(0.5, 0.5, 0.9));
         assertTrue(Demo.isTriangle(0.5, 0.3, 0.4)); 
         assertTrue(Demo.isTriangle(19.3, 40, 22.2)); 
     }
+
+	@Test
+	public void testValidTriangleTwoEquals() {
+        assertTrue(Demo.isTriangle(5, 5, 9));
+        assertTrue(Demo.isTriangle(8, 5, 5)); 
+        assertTrue(Demo.isTriangle(7, 7, 12)); 
+    }
+	
+	@Test
+	public void testInValidTriangleTest1() {
+        assertFalse(Demo.isTriangle(10, 100, 30));
+        assertFalse(Demo.isTriangle(8, 2, 4)); 
+        assertFalse(Demo.isTriangle(5, 2, 22)); 
+    }
+	
+	
 	
 	//
     @Test
